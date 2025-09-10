@@ -2,8 +2,7 @@
 sudo apt update && sudo apt upgrade
 
 # Install
-sudo apt install -y \ 
-git \
+sudo apt install -y git \
 wget \
 curl \
 vim \

@@ -24,6 +24,9 @@ sudo apt install -y eza
 # Install librewolf
 sudo extrepo enable librewolf
 sudo apt update && sudo apt install librewolf -y
+# remove firefox
+sudo apt purge firefox
+sudo apt autoremove
 
 # Flathub software
 flatpak install -y flathub \

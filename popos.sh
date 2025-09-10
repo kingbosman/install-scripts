@@ -1,5 +1,5 @@
 # On first run do system upgrade
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 
 # Install
 sudo apt install -y git \
@@ -10,7 +10,8 @@ gpg \
 fzf \
 timeshift \
 extrepo \
-flameshot
+flameshot \
+neofetch
 
 # Install eza
 sudo mkdir -p /etc/apt/keyrings

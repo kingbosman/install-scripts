@@ -4,12 +4,19 @@
 set -e
 
 sudo apt install -y tmux \
-	nvim \
+	neovim \
 	gh \
 	i3 \
 	lazygit \
-	lazydocker
-	# later also python php go nvm/npm
+	lazydocker \
+ 	htop \
+  	make \
+   	unzip \
+	gcc \
+ 	ripgrep
+  	  	
+# TODO: docker
+ # later also python php go nvm/npm
 
 #kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin

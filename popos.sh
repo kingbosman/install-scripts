@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# set flag to stop if error
+set -e
+
 # On first run do system upgrade
 sudo apt update && sudo apt upgrade -y
 
@@ -35,6 +40,7 @@ org.gimp.GIMP \
 net.cozic.joplin_desktop \
 org.videolan.VLC \
 com.discordapp.Discord
+# TODO: boxes
 
 # Enable Firewall
 sudo ufw enable

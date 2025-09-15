@@ -29,6 +29,7 @@ read -r git_email
 if [[ -n "$git_name" ]] && [[ -n "$git_email" ]]; then
   git config --global user.name "$git_name"
   git config --global user.email "$git_email"
+  git config --global pull.rebase true
   echo "Git config has been updated successfully."
   echo "User Name: $(git config --global user.name)"
   echo "User Email: $(git config --global user.email)"

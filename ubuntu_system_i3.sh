@@ -3,13 +3,12 @@
 # set flag to stop if error
 set -e
 
-
 # On first run do system upgrade
 sudo apt update && sudo apt upgrade -y
 
 #first git because it needs input
 sudo apt install -y git
-chmod +x ./git_init.sh && ./git_init.sh
+sudo sh ./git_init.sh
 
 # Install
 sudo apt install -y wget \
@@ -24,13 +23,13 @@ tmux \
 neovim \
 gh \
 i3 \
-lazygit \
-lazydocker \
 htop \
 make \
 unzip \
 gcc \
 ripgrep
+# lazygit \
+# lazydocker \ #TODO: this wont work lazy through go
 
 # Install eza
 sudo mkdir -p /etc/apt/keyrings
@@ -53,14 +52,14 @@ com.discordapp.Discord \
 org.gnome.Boxes
 
 # Install Hack Nerd font
-sudo chmod +x ./install_nerdfont.sh && ./install_nerdfont.sh Hack
+sudo sh ./install_nerdfont.sh Hack
 
 # remove old docker packages
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
 #Install docker with script
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
+sudo sh /tmp/get-docker.sh
 
 # Add docker group and user to this
 # Can be skipped, but docker will require sudo

@@ -28,8 +28,6 @@ make \
 unzip \
 gcc \
 ripgrep
-# lazygit \
-# lazydocker \ #TODO: this wont work lazy through go
 
 # Install eza
 sudo mkdir -p /etc/apt/keyrings
@@ -70,6 +68,18 @@ echo "docker group has been made, to test run 'docker run hello-world'"
 
  # TODO:
  # later also python php go
+
+ #install or update go
+ sudo sh ./get_go.sh
+ 
+ # Go Environment Variables, need to be set in each session (.bashrc)
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+#lazygit & lazydocker
+go install github.com/jesseduffield/lazygit@latest
+go install github.com/jesseduffield/lazydocker@latest
 
 # Enable Firewall
 sudo ufw enable

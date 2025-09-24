@@ -10,6 +10,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y git
 sudo sh ./git_init.sh
 
+#TODO: ssh keygen and ssh agent
+
 # Install
 sudo apt install -y wget \
 curl \

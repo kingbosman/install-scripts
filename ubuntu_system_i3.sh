@@ -25,6 +25,7 @@ tmux \
 neovim \
 gh \
 i3 \
+polybar \
 htop \
 make \
 unzip \

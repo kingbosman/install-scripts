@@ -30,6 +30,7 @@ htop \
 make \
 unzip \
 gcc \
+zoxide \
 ripgrep
 
 # Install eza
@@ -83,6 +84,9 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 #lazygit & lazydocker
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
+
+# Latest php
+sudo sh ./install_php.sh
 
 # Enable Firewall
 sudo ufw enable

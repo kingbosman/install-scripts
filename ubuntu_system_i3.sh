@@ -71,7 +71,7 @@ newgrp docker # can be replaced by system reboot
 echo "docker group has been made, to test run 'docker run hello-world'"
 
  # TODO:
- # later also python php
+ # later also python
 
  #install or update go
  sudo sh ./get_go.sh

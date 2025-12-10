@@ -19,7 +19,7 @@ tmux \
 neovim \
 gh \
 i3 \
-# polybar \
+polybar \
 htop \
 make \
 unzip \

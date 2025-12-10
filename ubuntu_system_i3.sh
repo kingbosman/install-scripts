@@ -10,8 +10,6 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y git
 sudo sh ./git_init.sh
 
-#TODO: ssh keygen and ssh agent
-
 # Install
 sudo apt install -y wget \
 curl \
@@ -25,7 +23,7 @@ tmux \
 neovim \
 gh \
 i3 \
-polybar \
+# polybar \
 htop \
 make \
 unzip \
@@ -69,9 +67,6 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker # can be replaced by system reboot
 echo "docker group has been made, to test run 'docker run hello-world'"
-
- # TODO:
- # later also python
 
  #install or update go
  sudo sh ./get_go.sh

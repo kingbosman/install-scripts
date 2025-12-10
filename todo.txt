@@ -14,5 +14,5 @@
 - camera recording
 - voice recording
 - image editing (paint like) gimp
-- note keeping 
-
+- latest python script
+- Polybar maybe in dots

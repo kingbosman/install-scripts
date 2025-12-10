@@ -6,6 +6,18 @@ set -e
 # Enable verbose debugging - shows each command before executing
 set -x
 
+# Function to wait for apt lock to be released
+wait_for_apt() {
+    echo "Waiting for apt lock to be released..."
+    while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1 || \
+          sudo fuser /var/lib/apt/lists/lock >/dev/null 2>&1 || \
+          sudo fuser /var/cache/apt/archives/lock >/dev/null 2>&1; do
+        echo "Waiting for other apt processes to finish..."
+        sleep 2
+    done
+    echo "Apt lock released, continuing..."
+}
+
 #init git (run without sudo to configure for current user, not root)
 ./git_init.sh
 
@@ -13,6 +25,7 @@ echo "====== GIT INIT COMPLETE ======"
 
 # Install
 echo "====== STARTING APT INSTALLATIONS ======"
+wait_for_apt
 sudo apt install -y wget \
 curl \
 vim \
@@ -37,6 +50,7 @@ echo "====== APT INSTALLATIONS COMPLETE ======"
 
 # Install eza
 echo "====== INSTALLING EZA ======"
+wait_for_apt
 sudo mkdir -p /etc/apt/keyrings
 wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
 echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list

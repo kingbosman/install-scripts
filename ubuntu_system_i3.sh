@@ -9,8 +9,8 @@ set -x
 # Also log to a file for review
 exec 2> >(tee -a "/tmp/ubuntu_install_debug.log" >&2)
 
-#init git
-sudo sh ./git_init.sh
+#init git (run without sudo to configure for current user, not root)
+./git_init.sh
 
 # Install
 sudo apt install -y wget \
@@ -54,7 +54,7 @@ com.discordapp.Discord \
 org.gnome.Boxes
 
 # Install Hack Nerd font
-sudo sh ./install_nerdfont.sh Hack
+sudo ./install_nerdfont.sh Hack
 
 # remove old docker packages
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
@@ -71,7 +71,7 @@ newgrp docker # can be replaced by system reboot
 echo "docker group has been made, to test run 'docker run hello-world'"
 
  #install or update go
- sudo sh ./get_go.sh
+ sudo ./get_go.sh
  
  # Go Environment Variables, need to be set in each session (.bashrc)
 export GOROOT=/usr/local/go
@@ -83,7 +83,7 @@ go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
 
 # Latest php
-sudo sh ./install_php.sh
+sudo ./install_php.sh
 
 # Enable Firewall
 sudo ufw enable

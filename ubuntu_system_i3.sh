@@ -3,11 +3,7 @@
 # set flag to stop if error
 set -e
 
-# On first run do system upgrade
-sudo apt update && sudo apt upgrade -y
-
-#first git because it needs input
-sudo apt install -y git
+#init git
 sudo sh ./git_init.sh
 
 # Install

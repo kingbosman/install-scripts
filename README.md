@@ -14,7 +14,7 @@ Use dotfiles repo for installing dotfiles
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git
-mkdir ~/projects/github.com/kingbosman -p
-cd ~/projects/github.com/kingbosman
 git clone https://github.com/kingbosman/install-scripts.git
+source ~/install-scripts/ubuntu_system_i3.sh
+rm -rf ~/install-scripts
 ```

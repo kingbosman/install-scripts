@@ -8,11 +8,32 @@ set -x
 
 # Function to wait for apt lock to be released
 wait_for_apt() {
-    echo "Waiting for apt lock to be released..."
+    echo "Checking for apt locks..."
+
+    # Stop packagekitd if it's running (common culprit for locks)
+    if systemctl is-active --quiet packagekit; then
+        echo "Stopping packagekit service..."
+        sudo systemctl stop packagekit
+        sudo systemctl mask packagekit
+    fi
+
+    # Wait for any remaining locks
+    local max_attempts=30
+    local attempt=0
     while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1 || \
           sudo fuser /var/lib/apt/lists/lock >/dev/null 2>&1 || \
           sudo fuser /var/cache/apt/archives/lock >/dev/null 2>&1; do
-        echo "Waiting for other apt processes to finish..."
+        attempt=$((attempt + 1))
+        if [ $attempt -ge $max_attempts ]; then
+            echo "ERROR: Waited too long for apt lock. Trying to force release..."
+            sudo killall apt apt-get dpkg packagekitd 2>/dev/null || true
+            sudo rm -f /var/lib/apt/lists/lock
+            sudo rm -f /var/cache/apt/archives/lock
+            sudo rm -f /var/lib/dpkg/lock-frontend
+            sudo dpkg --configure -a
+            break
+        fi
+        echo "Waiting for other apt processes to finish... (attempt $attempt/$max_attempts)"
         sleep 2
     done
     echo "Apt lock released, continuing..."

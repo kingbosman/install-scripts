@@ -4,7 +4,7 @@
 set -e
 
 #init git
-sudo sh ./git_init.sh
+# sudo sh ./git_init.sh
 
 # Install
 sudo apt install -y wget \

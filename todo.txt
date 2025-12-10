@@ -1,0 +1,18 @@
+- start terminal in tmux called main
+- insert emoji shortcut
+- get earlier copied item pasted
+- connect bluetooth items
+- connect wifi
+- notifications 
+- launch program 
+- move to another desktop / switch to another desktop 
+- lock 
+- cmd e, cmd b
+- script map capslock dell/thinkad
+- screenshot area to clipboard / save 
+- also video screen
+- camera recording
+- voice recording
+- image editing (paint like) gimp
+- latest python script
+- Polybar maybe in dots

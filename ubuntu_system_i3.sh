@@ -3,8 +3,14 @@
 # set flag to stop if error
 set -e
 
+# Enable verbose debugging - shows each command before executing
+set -x
+
+# Also log to a file for review
+exec 2> >(tee -a "/tmp/ubuntu_install_debug.log" >&2)
+
 #init git
-# sudo sh ./git_init.sh
+sudo sh ./git_init.sh
 
 # Install
 sudo apt install -y wget \
@@ -27,8 +33,6 @@ gcc \
 zoxide \
 ripgrep
 
-echo 'Done with first set of programs'
-
 # Install eza
 sudo mkdir -p /etc/apt/keyrings
 wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
@@ -37,12 +41,8 @@ sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.lis
 sudo apt update
 sudo apt install -y eza
 
-echo 'done with eza'
-
 #kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-
-echo 'done with kitty'
 
 # Flathub software
 flatpak install -y flathub \
@@ -53,17 +53,11 @@ org.videolan.VLC \
 com.discordapp.Discord \
 org.gnome.Boxes
 
-echo 'done with flathub'
-
 # Install Hack Nerd font
 sudo sh ./install_nerdfont.sh Hack
 
-echo 'done nerdfont'
-
 # remove old docker packages
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
-
-echo 'done docker'
 
 #Install docker with script
 curl -fsSL https://get.docker.com -o /tmp/get-docker.sh

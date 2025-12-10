@@ -84,10 +84,16 @@ sudo sh /tmp/get-docker.sh
 # Add docker group and user to this
 # Can be skipped, but docker will require sudo
 echo "====== CONFIGURING DOCKER GROUP ======"
-sudo groupadd docker
+# Create docker group only if it doesn't exist
+if ! getent group docker > /dev/null 2>&1; then
+    sudo groupadd docker
+    echo "Docker group created"
+else
+    echo "Docker group already exists"
+fi
 sudo usermod -aG docker $USER
-newgrp docker # can be replaced by system reboot
-echo "docker group has been made, to test run 'docker run hello-world'"
+echo "User added to docker group. Log out and back in for changes to take effect."
+echo "To test docker without logging out, run: newgrp docker && docker run hello-world"
 
 echo "====== DOCKER COMPLETE ======"
 

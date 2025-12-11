@@ -40,7 +40,8 @@ wait_for_apt() {
 }
 
 #init git (run without sudo to configure for current user, not root)
-./git_init.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+bash "$SCRIPT_DIR/git_init.sh"
 
 echo "====== GIT INIT COMPLETE ======"
 
@@ -101,7 +102,7 @@ echo "====== FLATPAK APPS COMPLETE ======"
 
 # Install Hack Nerd font used as default so included
 echo "====== INSTALLING NERD FONT ======"
-sudo ./install_nerdfont.sh Hack
+sudo bash "$SCRIPT_DIR/install_nerdfont.sh" Hack
 
 echo "====== NERD FONT COMPLETE ======"
 
@@ -135,7 +136,7 @@ echo "====== DOCKER COMPLETE ======"
  #install or update go
  # Go is needed as default for installing LAZY
  echo "====== INSTALLING GO ======"
- sudo ./get_go.sh
+ sudo bash "$SCRIPT_DIR/get_go.sh"
  
  # Go Environment Variables, need to be set in each session (.bashrc)
 echo "====== GO COMPLETE ======"

@@ -99,7 +99,7 @@ org.gnome.Boxes
 
 echo "====== FLATPAK APPS COMPLETE ======"
 
-# Install Hack Nerd font
+# Install Hack Nerd font used as default so included
 echo "====== INSTALLING NERD FONT ======"
 sudo ./install_nerdfont.sh Hack
 
@@ -150,12 +150,6 @@ go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
 
 echo "====== LAZYGIT & LAZYDOCKER COMPLETE ======"
-
-# Latest php
-echo "====== INSTALLING PHP ======"
-sudo ./install_php.sh
-
-echo "====== PHP COMPLETE ======"
 
 # Enable Firewall
 echo "====== ENABLING FIREWALL ======"

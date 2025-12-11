@@ -16,6 +16,5 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y git
 git clone https://github.com/kingbosman/install-scripts.git /tmp/install-scripts
 chmod +x /tmp/install-scripts/ubuntu-system_i3.sh
-source /tmp/install-scripts/ubuntu_system_i3.sh
-rm -rf /tmp/install-scripts
+. /tmp/install-scripts/ubuntu_system_i3.sh
 ```

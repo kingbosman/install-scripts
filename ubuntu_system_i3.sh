@@ -133,6 +133,7 @@ echo "To test docker without logging out, run: newgrp docker && docker run hello
 echo "====== DOCKER COMPLETE ======"
 
  #install or update go
+ # Go is needed as default for installing LAZY
  echo "====== INSTALLING GO ======"
  sudo ./get_go.sh
  

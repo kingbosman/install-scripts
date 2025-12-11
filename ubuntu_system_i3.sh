@@ -160,3 +160,4 @@ echo "====== ENABLING FIREWALL ======"
 sudo ufw enable
 
 echo "====== ALL INSTALLATIONS COMPLETE ======"
+echo "======= Please reboot ========="

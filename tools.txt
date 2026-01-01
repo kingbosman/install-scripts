@@ -1,0 +1,8 @@
+keychain
+php
+python
+golang
+lazygit
+lazydocker
+composer
+uv
